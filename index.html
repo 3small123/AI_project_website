@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>智慧能源監控系統：融合AI與感測器的節能優化平台</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #333;
+            overflow: hidden;
+        }
+
+        nav a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .container {
+            padding: 20px;
+        }
+
+        section {
+            display: none;
+        }
+
+        section.active {
+            display: block;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #f1f1f1;
+        }
+    </style>
+    <script>
+        function showContent(id) {
+            const sections = document.querySelectorAll("section");
+            sections.forEach(section => section.classList.remove("active"));
+            document.getElementById(id).classList.add("active");
+        }
+    </script>
+</head>
+
+<body>
+    <header>
+        <h1>智慧能源監控系統：融合AI與感測器的節能優化平台</h1>
+    </header>
+
+    <nav>
+        <a href="#" onclick="showContent('intro')">前言</a>
+        <a href="#" onclick="showContent('research')">文獻探討</a>
+        <a href="#" onclick="showContent('design')">系統設計與架構</a>
+        <a href="#" onclick="showContent('implementation')">系統實作與技術應用</a>
+        <a href="#" onclick="showContent('testing')">系統測試與評估</a>
+        <a href="#" onclick="showContent('results')">成果展示與應用情境</a>
+        <a href="#" onclick="showContent('conclusion')">結論與未來展望</a>
+        <a href="#" onclick="showContent('appendix')">附錄</a>
+    </nav>
+
+    <div class="container">
+        <section id="intro" class="active">
+            <h2>一、前言</h2>
+            <h3>1.1 研究動機</h3>
+            <p>隨著全球能源消耗日益增加與環保意識抬頭，如何有效管理與節約能源成為重要課題。傳統能源管理方式多為被動監控，缺乏即時反應與預測能力，導致能源浪費。近年來，結合人工智慧（AI）與感測器的智慧能源系統逐漸受到重視，具備主動監控、預測與優化的能力，有助於提升能源使用效率。</p>
+
+            <h3>1.2 研究目的</h3>
+            <p>本專題旨在建構一套智慧能源監控系統，結合感測器實際量測資料與AI模型進行數據分析與預測，進一步實施節能策略，達成智慧化、自動化的能源管理目標。</p>
+
+            <h3>1.3 問題定義與需求分析</h3>
+            <ul>
+                <li>傳統能源管理系統無法即時掌握用電情形。</li>
+                <li>無預測能力，無法主動提供節能建議。</li>
+                <li>缺乏人性化操作介面，使用者參與度低。</li>
+                <li>需整合感測資料、AI分析與控制機制。</li>
+            </ul>
+
+            <h3>1.4 專題範圍與限制</h3>
+            <ul>
+                <li>使用常見感測器（溫濕度、光照、電流）進行資料收集。</li>
+                <li>應用簡單的AI模型進行用電預測與節能建議。</li>
+                <li>系統部署於室內空間，如教室或實驗室。</li>
+                <li>項目以原型開發為主，實際部署受限於硬體與預算。</li>
+            </ul>
+        </section>
+
+        <section id="research">
+            <h2>二、文獻探討</h2>
+            <h3>2.1 智慧能源管理相關研究與應用</h3>
+            <p>文獻指出，智慧能源系統可整合IoT設備與AI進行即時監控與預測。部分研究強調深度學習技術能有效提升用電預測準確度，並結合策略模型提出節能建議。</p>
+
+            <h3>2.2 感測器技術概述</h3>
+            <ul>
+                <li>溫濕度感測器：如DHT11/22，廣泛應用於環境監測。</li>
+                <li>光照感測器：如BH1750，用於偵測環境亮度。</li>
+                <li>電流感測器：如ACS712，可測量用電設備電流大小。</li>
+            </ul>
+
+            <h3>2.3 人工智慧於能源預測/管理的應用</h3>
+            <p>常見方法包括決策樹、支持向量機（SVM）及時間序列模型（如LSTM）。這些方法可用於用電趨勢預測、異常偵測與負載分類。</p>
+
+            <h3>2.4 現有系統比較與優劣分析</h3>
+            <p>目前商業系統如Google Nest、Sense等，雖具完整功能，但成本高、缺乏客製化與學術性可延伸空間。本專題強調自建模型與系統整合，具彈性與教育性價值。</p>
+        </section>
+
+        <section id="design">
+            <h2>三、系統設計與架構</h2>
+            <h3>3.1 系統整體架構圖</h3>
+            <p>系統架構包含三大模組：感測模組、AI預測模組、控制與介面模組，透過MQTT或HTTP協定互相傳遞資料。</p>
+
+            <h3>3.2 硬體架構設計</h3>
+            <p>主控制板：ESP32，感測器模組：DHT22、BH1750、ACS712，顯示模組：OLED螢幕或Web Dashboard。</p>
+
+            <h3>3.3 軟體架構設計</h3>
+            <p>資料收集與傳輸：使用ESP32透過Wi-Fi傳送資料至後端平台（如Node-RED）。</p>
+            <p>資料儲存：以Firebase或MongoDB儲存時間序列數據。</p>
+            <p>AI分析：Python進行資料訓練與預測，結果回傳控制模組。</p>
+
+            <h3>3.4 AI 模型設計</h3>
+            <p>模型選擇：時間序列預測模型（如LSTM）。</p>
+            <p>訓練資料：感測器所蒐集之歷史用電與環境數據。</p>
+            <p>預測目標：下一時段的預期用電值，提供節能建議。</p>
+
+            <h3>3.5 使用者介面設計</h3>
+            <ul>
+                <li>顯示即時感測值</li>
+                <li>提供AI預測結果</li>
+                <li>顯示歷史趨勢與節能建議</li>
+                <li>可手動或自動控制特定設備</li>
+            </ul>
+        </section>
+
+        <section id="implementation">
+            <h2>四、系統實作與技術應用</h2>
+            <!-- 依需求繼續延伸 -->
+        </section>
+
+        <section id="testing">
+            <h2>五、系統測試與評估</h2>
+            <!-- 測試部分 -->
+        </section>
+
+        <section id="results">
+            <h2>六、成果展示與應用情境</h2>
+            <!-- 成果展示內容 -->
+        </section>
+
+        <section id="conclusion">
+            <h2>七、結論與未來展望</h2>
+            <!-- 結論與未來方向 -->
+        </section>
+
+        <section id="appendix">
+            <h2>八、附錄</h2>
+            <!-- 附錄內容 -->
+        </section>
+    </div>
+
+    <footer>
+        <p>智慧能源監控系統 © 2025</p>
+    </footer>
+</body>
+
+</html>
